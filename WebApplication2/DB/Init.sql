@@ -32,12 +32,14 @@ alter table dbo.EventStore
 select random()::text; --::text means cast
 
 --trigger
+
+--trigger
 DROP TRIGGER  IF EXISTS event_store_update ON dbo.EventStore 
 
 create trigger event_store_update
 before insert or update on dbo.EventStore
 for each row execute procedure
-tsvector_update_trigger(search_field,'pg_catalog.dbo','english',JsonData,ObjType);-- error not config full text search
+tsvector_update_trigger(search_field,'pg_catalog.english',JsonData,ObjType);
 
 --select with vector
 select * from dbo.EventStore
