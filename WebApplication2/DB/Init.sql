@@ -13,7 +13,7 @@ CREATE SCHEMA dbo;
 
 CREATE TABLE dbo.EventStore(
 	--id serial primary key : serial mean identity(1,1)
-	Id text  PRIMARY KEY  default uuid_generate_v4()::text , 
+	Id varchar  PRIMARY KEY  default uuid_generate_v4()::text , 
 	AggId varchar NULL, --varchar mean nvachar(max), unicode is default
 	CreatedDate timestamptz default THE_TIME(),
 	IsDeleted boolean NOT NULL,
